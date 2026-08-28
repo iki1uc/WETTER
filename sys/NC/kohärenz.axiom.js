@@ -1,18 +1,22 @@
 RUN3_BIL = function(alpha, beta, gamma) {
 
-    // NIL – Nullpunkt
-    const NIL = 0;
+    // NIL – Nullpunkt (rein, driftfrei)
+    const NIL = {
+        value: 0,
+        drift: 0,
+        state: "NIL"
+    };
 
-    // BIL – bilaterale Spiegelung (90°)
+    // BIL – bilaterale Spiegelachse (90°)
     const BIL = {
         alpha: alpha,
         beta: beta,
 
-        // Spiegelachse (immer orthogonal)
+        // Orthogonale Spiegelung
         mirror: {
             x: -beta,
             y:  alpha,
-            z:  (alpha * beta) * -1
+            z: (alpha * beta) * -1
         },
 
         // Superlage – stabilisierte 90°-Achse
@@ -23,12 +27,19 @@ RUN3_BIL = function(alpha, beta, gamma) {
         }
     };
 
+    // ORTHO – gamma bleibt orthogonal (zweite 90°-Achse)
+    const ORTHO = {
+        x: alpha,
+        y: beta,
+        z: alpha * beta
+    };
+
     // Rückgabe – Superlage Respo
     return {
         NIL,
         BIL,
+        ORTHO,
         gamma,
         kohärenz: BIL.superlage
     };
 };
-
