@@ -1,0 +1,42 @@
+AXIOM.gamma = function(t = performance.now() * 0.001) {
+
+    const e = QI_IQQ.status();
+
+    const alpha = e.qi;
+    const beta  = e.flow;
+
+    // 90°-Orthogonalisierung
+    const gamma_vec = {
+        x: 0,
+        y: 0,
+        z: (alpha * beta)  // Kreuzprodukt-Ersatz für 1D-Werte
+    };
+
+    const gamma = CONSEQUENCE_BIO(alpha, beta, t);
+
+    gamma.vector = gamma_vec;
+
+    return {
+        alpha,
+        beta,
+        gamma,
+
+        diff: gamma.diff,
+        n6: gamma.n6,
+        growth: gamma.growth,
+        pulse: gamma.pulse,
+        mutate: gamma.mutate,
+        branch: gamma.branch,
+        hologram: gamma.hologram,
+
+        forsaken: Math.abs(alpha - beta) * 0.33,
+
+        value: {
+            gold:     Math.abs(gamma.growth * 0.12),
+            silber:   Math.abs(gamma.pulse  * 0.08),
+            bronze:   Math.abs(gamma.mutate * 0.06),
+            platin:   Math.abs(gamma.branch * 0.14),
+            diamant:  Math.abs(gamma.hologram.shimmer * 0.2)
+        }
+    };
+};
