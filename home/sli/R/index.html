@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>IKI1UC · ROM · Axiom‑12 · Archiv</title>
+
+<style>
+body { background:#000; color:#0ff; font-family:Consolas; padding:20px; }
+h1 { color:#6cf; }
+h2 { color:#0f0; margin-top:30px; }
+pre { background:#111; padding:12px; border:1px solid #333; border-radius:6px; }
+#input { width:400px; padding:10px; background:#111; color:#0f0; border:1px solid #333; }
+button { margin:5px; padding:10px; background:#111; color:#0f0; border:1px solid #333; }
+</style>
+
+<script type="module">
+import {
+    ID,
+    WHIRL,
+    TMP_Whirl,
+    PQ_PC_Parallel,
+    RESPO_Whirl,
+    NC_link_Whirl,
+    PIPELINE_LOAD
+} from "./IQQ.js";
+
+// =========================
+// ROM (Archiv)
+// =========================
+
+const ROM_FRAMES = [];
+
+function ROM_Store(frame){
+    ROM_FRAMES.push({
+        frame,
+        stamp: Date.now()
+    });
+    return ROM_FRAMES;
+}
+
+// =========================
+// UI / Pipeline
+// =========================
+
+document.addEventListener("keydown", e => {
+    if(e.key === "Enter"){
+        const text = document.getElementById("input").value;
+
+        // Pipeline aus IQQ.js
+        const out = PIPELINE_LOAD(text);
+
+        // ROM Archiv
+        const romFrame = ROM_Store(out.whirl);
+
+        // UI Ausgabe
+        document.getElementById("id").textContent = ID.info();
+        document.getElementById("whirl").textContent = JSON.stringify(out.whirl, null, 2);
+        document.getElementById("pq").textContent = JSON.stringify(PQ_HISTORY, null, 2);
+        document.getElementById("respo").textContent = JSON.stringify(RESPO_LOG, null, 2);
+        document.getElementById("nc").textContent = JSON.stringify(NC_LOG, null, 2);
+        document.getElementById("tmp").textContent = JSON.stringify(TMP, null, 2);
+        document.getElementById("rom").textContent = JSON.stringify(ROM_FRAMES, null, 2);
+    }
+});
+
+window.setID = function(mode){
+    ID.set(mode);
+    document.getElementById("id").textContent = ID.info();
+};
+</script>
+
+</head>
+
+<body>
+
+<h1>IKI1UC · ROM · Axiom‑12 · Archiv</h1>
+
+<h2>ID-Modus</h2>
+<button onclick="setID('koop')">KOOP</button>
+<button onclick="setID('neutral')">NEUTRAL</button>
+<button onclick="setID('pook')">POOK</button>
+
+<pre id="id">Neutral</pre>
+
+<h2>Input</h2>
+<input id="input" placeholder="ENTER → Pipeline Load">
+
+<h2>WHIRL-Core</h2>
+<pre id="whirl">Noch kein WHIRL</pre>
+
+<h2>PQ_HISTORY</h2>
+<pre id="pq">[]</pre>
+
+<h2>RESPO_LOG</h2>
+<pre id="respo">[]</pre>
+
+<h2>NC_LOG</h2>
+<pre id="nc">[]</pre>
+
+<h2>TMP-Achsen</h2>
+<pre id="tmp">Noch keine Achsen</pre>
+
+<h2>ROM Archiv</h2>
+<pre id="rom">Noch keine Frames</pre>
+
+</body>
+</html>
