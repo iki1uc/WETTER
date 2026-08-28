@@ -1,1 +1,30 @@
+QUICK_DRIVE = function(alpha, beta, gamma) {
+
+    // WRAIGHT – reine Laufachse
+    const RUN = {
+        alpha,
+        beta,
+        gamma
+    };
+
+    // 90°-Orthogonalität (Superlage)
+    const ORTHO = {
+        x: alpha,
+        y: beta,
+        z: alpha * beta
+    };
+
+    // Reinheit – kein Ballast
+    const PURE = {
+        drift: 0,
+        ballast: 0,
+        state: "WRAIGHT"
+    };
+
+    return {
+        RUN,
+        ORTHO,
+        PURE
+    };
+};
 
