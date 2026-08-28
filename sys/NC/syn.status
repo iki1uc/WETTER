@@ -1,1 +1,9 @@
+{
+  "beta": {
+    "flow": 0,
+    "takt": 0,
+    "frame": "syn",
+    "axis": "sync"
+  }
+}
 
