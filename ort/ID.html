@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>NOel – ID‑Modul</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    background: #000;
+    color: #e6e6e6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 20px;
+    color: #ffdd00;
+    font-size: 34px;
+    letter-spacing: 3px;
+  }
+
+  .panel {
+    margin: 20px;
+    padding: 20px;
+    background: #111;
+    border-radius: 10px;
+    border: 1px solid #333;
+  }
+
+  .panel h2 {
+    color: #00eaff;
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    display: inline-block;
+    margin: 6px;
+    padding: 8px 14px;
+    background: #00eaff;
+    color: #000;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+
+  .btn:hover {
+    background: #00bcd4;
+    transform: scale(1.05);
+  }
+
+  #live {
+    margin: 20px;
+    padding: 20px;
+    background: #111;
+    border-radius: 10px;
+    border: 1px solid #333;
+    color: #00ff9d;
+    white-space: pre-wrap;
+  }
+</style>
+
+<script src="GEO.physik.js"></script>
+<script src="GEO.geo.js"></script>
+<script src="NC.engine.js"></script>
+<script src="sure.stand.js"></script>
+<script src="zen.stand.js"></script>
+<script src="hardware.stand.js"></script>
+<script src="dyn.js"></script>
+<script src="neo.lauf.js"></script>
+
+</head>
+
+<body>
+
+<h1>NOel – Identitäts‑Modul</h1>
+
+<div class="panel">
+  <h2>Identitäts‑Schienen</h2>
+  <a class="btn" href="README.md">README</a>
+  <a class="btn" href="index.html">NOel‑Start</a>
+  <a class="btn" href="geo.md">GEO‑Geometrie</a>
+  <a class="btn" href="NC.engine.js">NC‑Engine</a>
+  <a class="btn" href="sure.stand.js">SURE‑Stand</a>
+  <a class="btn" href="zen.stand.js">ZEN‑Stand</a>
+  <a class="btn" href="hardware.stand.js">Hardware‑Stand</a>
+  <a class="btn" href="neo.lauf.js">NEO‑Lauf</a>
+</div>
+
+<div class="panel">
+  <h2>GEO‑Identität</h2>
+  <a class="btn" onclick="showGeo('HY')">HY</a>
+  <a class="btn" onclick="showGeo('PE')">PE</a>
+  <a class="btn" onclick="showGeo('PER')">PER</a>
+  <a class="btn" onclick="showGeo('TRANS')">TRANS</a>
+  <a class="btn" onclick="showGeo('WARB')">WARB</a>
+  <a class="btn" onclick="showGeo('KANAL')">KANAL</a>
+  <a class="btn" onclick="showGeo('TMPa')">TMP‑α</a>
+  <a class="btn" onclick="showGeo('TMPb')">TMP‑β</a>
+  <a class="btn" onclick="showGeo('TMPg')">TMP‑γ</a>
+</div>
+
+<div id="live"></div>
+
+<script>
+  function showGeo(type) {
+    const geo = GEOG[type]();
+    document.getElementById("live").innerText =
+      "GEO‑Segment (" + type + "):\n" + JSON.stringify(geo, null, 2);
+  }
+
+  const nc = NC.run(3);
+  document.getElementById("live").innerText =
+    "NOel‑ID‑NC.engine:\n" + JSON.stringify(nc, null, 2);
+</script>
+
+</body>
+</html>
