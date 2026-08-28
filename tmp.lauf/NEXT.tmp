@@ -1,1 +1,11 @@
+NEXT = {
+    state: "await",
+    context: "NC6",
+    trigger: "system.ready",
+    next: "quick.drive",
+    ballast: 0,
+    drift: 0,
+    wraight: true
+};
+
 
