@@ -1,1 +1,21 @@
+SYS_TMP = {
+
+    // Explorer-Slot (leer, user-bestimmt)
+    explorer: null,
+
+    // User wählt Browser
+    load: function(browserName) {
+        this.explorer = browserName;
+        return {
+            state: "loaded",
+            browser: browserName,
+            wraight: true
+        };
+    },
+
+    // System bleibt neutral
+    state: "await",
+    ballast: 0,
+    drift: 0
+};
 
