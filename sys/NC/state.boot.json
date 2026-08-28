@@ -1,0 +1,25 @@
+{
+  "BOOT.VERSION": "1.0",
+  "BOOT.ENTRY": "0x7C00",
+  "CPU.MODE": "real",
+  "MEM.DETECT": "0x413",
+  "STACK": "0x9000",
+  "DISK.INT": "INT13",
+  "VIDEO.INT": "INT10.03h",
+
+  "KERNEL.LBA": 1,
+  "KERNEL.SIZE": "32KB",
+  "KERNEL.ENTRY": "0x1000",
+
+  "SYNC.TIMER": "INT1A",
+  "SYNC.ARG": "arg.sync",
+
+  "TRACE": "enable",
+  "CRC": "CRC16",
+
+  "RELOCATE": "0x1000",
+  "AXIOM": "jump(OS.ENTRY)",
+
+  "STATE": "BOOT.SYNC.COMPLETE",
+  "STAMP": "243"
+}
