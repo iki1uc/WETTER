@@ -1,0 +1,13 @@
+NC6.CONTEXT = {
+    raum: "WRAIGHT",
+    lauf: "active",
+    achsen: {
+        run1: "alpha",
+        run2: "beta",
+        run3: "bil"
+    },
+    kohärenz: "axiom.run3",
+    ballast: 0,
+    drift: 0,
+    state: "NC6"
+};
