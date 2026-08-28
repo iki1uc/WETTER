@@ -1,0 +1,42 @@
+{
+  "RUNTIME.VERSION": "1.0",
+  "RUNTIME.STATE": "KERNEL.SYNC.ACTIVE",
+
+  "CPU.MODE": "protected",
+  "MEM.MAP": "flat",
+  "STACK.TOP": "0x9FFF",
+
+  "KERNEL.MODULES": {
+    "1.js": "loaded",
+    "2.js": "loaded",
+    "3.js": "loaded",
+    "4.js": "loaded",
+    "5.js": "loaded",
+    "6.js": "verified",
+    "7.js": "relocated",
+    "8.js": "axiom.ready",
+    "9.js": "handoff.complete"
+  },
+
+  "SLI.SYSTEM": {
+    "243.TIMER": "INT1A",
+    "243.SYNC": "arg.sync.active",
+    "243.STAMP": "runtime"
+  },
+
+  "NC.SERVICE": {
+    "system.room": "open",
+    "state.boot": "linked",
+    "state.runtime": "active"
+  },
+
+  "ENERGY.MODE": "runtime.flow",
+  "TRACE.MODE": "sequential",
+  "TRACE.FILE": "/boot/trace.log",
+
+  "CRC.STATUS": "valid",
+  "RELOCATE.STATUS": "complete",
+
+  "RUNTIME.TICK": "1",
+  "RUNTIME.TIME": "now"
+}
