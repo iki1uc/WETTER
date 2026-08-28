@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>U4X · GPU · NC · ULTRA3.0 · ID</title>
+
+<style>
+    body { background:#111; color:#eee; font-family: monospace; padding:20px; }
+    .block { margin-bottom:20px; padding:10px; border:1px solid #444; }
+    input, textarea { width:100%; background:#222; color:#eee; border:1px solid #555; padding:8px; }
+    button { background:#0f0; color:#000; padding:10px 20px; border:none; cursor:pointer; }
+</style>
+</head>
+<body>
+
+<h2>U4X · GPU · NC · ULTRA3.0</h2>
+
+<div class="block">
+    <h3>ID · CORE</h3>
+    <pre id="idCore"></pre>
+</div>
+
+<div class="block">
+    <h3>U4X Input</h3>
+    <input id="benchInput" placeholder="type raw input...">
+</div>
+
+<div class="block">
+    <h3>U4X Output</h3>
+    <textarea id="benchOutput" rows="6" readonly></textarea>
+</div>
+
+<div class="block">
+    <h3>GPU / NC Output</h3>
+    <textarea id="gpuOutput" rows="12" readonly></textarea>
+</div>
+
+<button onclick="RUN_GPU()">RUN GPU PIPE</button>
+
+<script type="module">
+
+// ---------------------------------------------------------
+// IMPORT MODULES
+// ---------------------------------------------------------
+import { ID_CORE } from "./ID.core.js";
+import { NC_VECTOR_NEXT } from "./NC.vector.next.js";
+import { NC_PRUEFUNG_FIX } from "./NC.pruefung.fix.js";
+import { ULTRA_FUSION } from "./FUSION.fix.js";
+
+// ---------------------------------------------------------
+// SHOW ID
+// ---------------------------------------------------------
+document.getElementById("idCore").innerText =
+    JSON.stringify(ID_CORE, null, 2);
+
+// ---------------------------------------------------------
+// U4X BENCH VIEWER
+// ---------------------------------------------------------
+document.getElementById("benchInput").addEventListener("input", function() {
+    let v = this.value;
+    document.getElementById("benchOutput").value = v;
+});
+
+// ---------------------------------------------------------
+// GPU PIPELINE RUN
+// ---------------------------------------------------------
+async function RUN_GPU(){
+
+    // 1) U4X INPUT
+    const u4x = document.getElementById("benchInput").value || "EMPTY";
+
+    // 2) NC VECTOR (4-0-1-2-9-∞)
+    const vector = NC_VECTOR_NEXT(
+        u4x,
+        "KI-KERN",
+        "DA-START",
+        "NE-FEHLER",
+        "BEN-VOLLENDUNG"
+    );
+
+    // 3) NC PRÜFUNG FIX
+    const check = NC_PRUEFUNG_FIX();
+
+    // 4) ULTRA3.0 FUSION
+    const fusion = ULTRA_FUSION(u4x);
+
+    // 5) OUTPUT
+    const out = {
+        id: ID_CORE,
+        u4x_input: u4x,
+        vector,
+        check,
+        fusion,
+        gpu_state: "GPU-PIPELINE-READY"
+    };
+
+    document.getElementById("gpuOutput").value =
+        JSON.stringify(out, null, 2);
+}
+
+</script>
+
+</body>
+</html>

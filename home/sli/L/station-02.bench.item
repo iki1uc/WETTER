@@ -1,0 +1,24 @@
+ITEM: U4X STATION 02
+TYPE: bench
+VERSION: raw-1
+
+# PURPOSE
+- zweite station
+- unabhängig von station 01
+
+# INPUTS
+? X
+? Y
+? Z
+
+# OUTPUTS
+! X
+! Y
+! Z
+
+# RULES
+& raw passt durch
+& keine Verbindung zu station 01
+& keine Korrektur
+
+END

@@ -1,0 +1,30 @@
+ITEM: U4X OPERATOR
+TYPE: operator
+VERSION: raw-1
+
+# PURPOSE
+- operator mapping
+- input → output
+
+# OPERATORS
+? = input
+! = output
+& = state
+
+# STATES
+&idle
+&processing
+&error
+
+# FLOW
+? → &processing
+&processing → !output
+&error → !err
+
+# TEST CASES
+?A → !A
+?B → !B
+?0 → !0
+?* → !*
+
+END

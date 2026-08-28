@@ -1,0 +1,7 @@
+export function NC_PRUEFUNG_FIX(){
+    return {
+        state: "NEVADA",
+        color: "gruen",
+        info: "Alle Stationen stabil (U4X aktiv)"
+    };
+}

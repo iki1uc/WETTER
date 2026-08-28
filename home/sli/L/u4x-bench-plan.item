@@ -1,0 +1,24 @@
+ITEM: U4X BENCH PLAN
+TYPE: bench
+VERSION: raw-1
+
+# PURPOSE
+- definiert tests
+- definiert erwartete outputs
+
+# INPUTS
+? test_1
+? test_2
+? test_3
+
+# OUTPUTS
+! out_1
+! out_2
+! out_3
+
+# RULES
+& raw rein → raw raus
+& keine auto-logik
+& keine meta-ebene
+
+END

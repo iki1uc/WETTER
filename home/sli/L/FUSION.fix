@@ -1,0 +1,3 @@
+export function ULTRA_FUSION(x){
+    return "win∞(rev1.0(beat∞(o9(o6(e3(h1(" + x + ")))))))";
+}

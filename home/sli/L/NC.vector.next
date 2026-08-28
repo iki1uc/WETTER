@@ -1,0 +1,11 @@
+export function NC_VECTOR_NEXT(u4x, ki, da, ne, ben){
+    return {
+        u4x,
+        ki,
+        da,
+        ne,
+        ben,
+        axis: "4-0-1-2-9-∞",
+        state: "NC-VECTOR-READY"
+    };
+}
