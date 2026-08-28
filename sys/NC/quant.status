@@ -1,1 +1,8 @@
-
+{
+  "alpha": {
+    "qi": 0,
+    "stabilität": 0,
+    "frame": "quant",
+    "axis": "state"
+  }
+}
