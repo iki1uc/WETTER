@@ -1,7 +1,20 @@
-{
-  RAM: 8192,
-  USED: 2048,
-  FREE: 6144,
+// leben.html – 81-Wetterstation
+
+import { TMP6D } from "./round.js";
+
+const wetter = TMP6D([3,9,27,81,243,756]);
+
+const lifeWeather = {
+  RAM: wetter.raw.length * 1024,     // Lebensenergie
+  USED: wetter.raum.length * 256,    // Raumverbrauch
+  FREE: 8192 - (wetter.raum.length * 256),
   PUMP: true,
-  SORTED: { numbers: [3,9,81,756,27] }
-}
+  SORTED: {
+    numbers: wetter.raw,
+    raum: wetter.raum,
+    kanal: wetter.kanal,
+    uberraum: wetter.uberraum
+  }
+};
+
+console.log("🌀 LEBENS-WETTER:", lifeWeather);
