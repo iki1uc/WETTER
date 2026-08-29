@@ -1,0 +1,6 @@
+const raw = values.map(Number).filter(n => !isNaN(n)).sort((a,b)=>a-b);
+const struct = raw.map((v,i)=>({ value:v, degree:i*40, percent:(v/raw[last])*100 }));
+const matrix = struct.map(a => ({ ...a, delta:..., knot:... }));
+const raum = matrix.map(a => ({ ...a, room:..., station:... }));
+const kanal = raum.map(a => ({ ...a, channel:..., flow:... }));
+const uberraum = kanal.map(a => ({ ...a, hyper:..., vector:..., fusion:... }));
