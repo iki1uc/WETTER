@@ -1,1 +1,15 @@
+import { TMP6D } from "./round.js";
+
+const arbeit = TMP6D([3,9,27,81,243,756]);
+
+const arbeitWetter = {
+  kanal: arbeit.kanal,       // 243-Ebene
+  flow: arbeit.kanal.map(k => k.flow),
+  channel: arbeit.kanal.map(k => k.channel),
+  energie: arbeit.raw.reduce((a,b)=>a+b,0),
+  raum: arbeit.raum,         // 81-Ebene (Stimmung)
+  uberraum: arbeit.uberraum  // 756-Ebene (Zukunft)
+};
+
+console.log("🌀 ARBEITS-WETTER:", arbeitWetter);
 
